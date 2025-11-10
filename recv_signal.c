@@ -22,6 +22,7 @@ int main() {
     sigemptyset(&sa.sa_mask);
     sigaction(SIGUSR1, &sa, NULL);
 
+    printf("Waiting for signal!\n");
     // Infinite wait which calls the function do() with the argument "nothing"
     while(1)
     {
