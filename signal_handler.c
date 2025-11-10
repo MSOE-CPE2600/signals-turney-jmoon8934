@@ -4,9 +4,10 @@
  */
 
 /**
- * Modified by:
- * 
+ * Modified by: Jeric moon
+ * Note: gcc -o "signal_handler" signal_handler.c
  * Brief summary of modifications:
+ *  Removed the line exit(1) from within the signal handler.
  */
 
 
@@ -20,7 +21,6 @@
  */
 void handle_signal() {
     printf("Received a signal\n");
-    exit(1);
 }
 
 int main() {
