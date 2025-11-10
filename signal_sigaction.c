@@ -31,7 +31,7 @@ int main() {
 }
 
 /*
-* Method which purpose is to handle an alarm signal.
+* Method which purpose is to handle an SIGUSR1 signal using sigaction.
 */
 void handle_sigurs1(int sig, siginfo_t *info, void *ucontext) {
     int sender_pid = info->si_pid;
