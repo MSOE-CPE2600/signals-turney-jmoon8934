@@ -4,7 +4,8 @@
  */
 
 /**
- * Modified by: Jeric moon
+ * Modified by: Jeric Moon, CPE2600 111
+ * Date: 11/10/2025
  * Note: gcc -o "signal_handler" signal_handler.c
  * Brief summary of modifications:
  *  Removed the line exit(1) from within the signal handler.

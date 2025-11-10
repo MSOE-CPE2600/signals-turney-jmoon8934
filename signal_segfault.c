@@ -5,7 +5,8 @@
 
 /**
  * Modified by: 
- * Jeric Moon
+ * Jeric Moon, CPE2600 111
+ * 11/10/2025
  * Brief summary of modifications:
  * Included new signal handler method and added a signal check.
  * Added more includes 
