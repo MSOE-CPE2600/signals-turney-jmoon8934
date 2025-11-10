@@ -4,15 +4,30 @@
  */
 
 /**
- * Modified by:
- * 
+ * Modified by: 
+ * Jeric Moon
  * Brief summary of modifications:
+ * Included new signal handler method and added a signal check.
+ * Added more includes 
  */
 
 
+#include <signal.h>
+#include <unistd.h>
+#include <stdlib.h>
 #include <stdio.h>
 
+/**
+ * @brief Signal handler for SIGSEGV  - prints a message and exits
+ */
+void handle_signal() {
+    printf("Segfault detected!\n");
+}
+
+
 int main (int argc, char* argv[]) {
+    // Register for a segfault signal
+    signal(SIGSEGV, handle_signal);
     // Declare a null pointer
     int* i = NULL;
 
