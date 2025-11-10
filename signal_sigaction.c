@@ -3,6 +3,8 @@
 * Author: Jeric Moon
 * Date: 11/10/2025 
 * Desc: Provides a simple sigaction method/example
+* Note: To send the SIGUSR1 command from terminal, kill -SIGUSR1 <PID>. 
+*   CTRL+Z stops the program, bg sends it to the background.
 ****************************************************************************/
 
 #include <signal.h>
@@ -10,24 +12,28 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void alarm_signal();
+void handle_sigurs1(int sig, siginfo_t *info, void *ucontext);
 
 int main() {
 
     // Register for the signal
-    signal(SIGALRM, alarm_signal);
+    struct sigaction sa = {0};
+    sa.sa_flags = SA_SIGINFO;
+    sa.sa_sigaction = &handle_sigurs1;
+    sigaction(SIGUSR1, &sa, NULL);
 
-    // Call an alarm signal
-    printf("Sending 5 second alarm and starting 10 second sleep\n");
-    alarm(5);
-    sleep(10);
-    printf("10 second sleep over\n");
+    // Infinite wait which calls the function do() with the argument "nothing"
+    while(1)
+    {
+        //do(nothing);
+    }
     return 0;
 }
 
 /*
 * Method which purpose is to handle an alarm signal.
 */
-void alarm_signal() {
-    printf("Alarm! Alarm! Alarm has executed.\n");
+void handle_sigurs1(int sig, siginfo_t *info, void *ucontext) {
+    int sender_pid = info->si_pid;
+    printf("Process ID of SIGUSR1 sender is: %d\n", sender_pid);
 }
